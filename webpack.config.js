@@ -28,8 +28,22 @@ module.exports = {
               modules: true
             }
           },
+          'resolve-url-loader',
           'sass-loader'
         ]
+      },
+      { // IMG Support
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
+      },
+      { test: /\.(png|woff|woff2|eot|ttf)$/, loader: 'url-loader' },
+      { // SVG Support
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   },
