@@ -1,0 +1,90 @@
+@import "../../styles/__vars.scss";
+
+.product {
+  padding: $space;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $lightHover;
+  }
+
+  .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    width: 180px;
+    background-color: $yellow;
+  }
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $smallSpace;
+    flex-basis: 80%;
+
+    .info {
+      width: 90%;
+      text-align: center;
+
+      .infoHeader {
+        display: flex;
+        font-size: $h1;
+        justify-content: center;
+
+        .shipping{
+          width: 20px;
+          margin-left: $smallSpace;
+        }
+      }
+
+      .infoDesc{
+        font-size: $h2;
+        margin-top: $space;
+      }
+    }
+  }
+
+  .city {
+    display: flex;
+    text-align: center;
+    margin-top: $smallSpace;
+    justify-content: center;
+    font-size: $span;
+  }
+
+  @media only screen and (min-width: $desktop) {
+    flex-direction: row;
+    align-items: flex-start;
+
+    .detail{
+      flex-direction: row;
+      align-items: start;
+      justify-content: flex-start;
+
+      .info{
+        text-align: start;
+
+        .infoHeader{
+          justify-content: flex-start;
+          text-align: start;
+        }
+      }
+
+    }
+
+    .city{
+      margin-top: 0;
+    }
+
+  }
+  
+  @media only screen and (min-width: $bigScreen) {
+    flex-direction: row;
+  }
+}
