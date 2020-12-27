@@ -3,16 +3,15 @@ import SVG from "react-inlinesvg";
 import { AppContext } from "../../contexts/provider";
 import { CFG } from ".././../../config";
 
-/*import { withRouter, Link } from 'react-router-dom'; */
-
 // Style
 import styles from "./SearchBar.module.scss";
 
 import lupa from "../../assets/lupa.svg";
+import { Link } from "react-router-dom";
 
 const LOGOSM = CFG.logoMELI;
 
-function SearchBar(props) {
+function SearchBar() {
 
   
   const [value, setValue] = useState("");
@@ -28,7 +27,13 @@ function SearchBar(props) {
   return (
     <header className={styles.header}>
       <div className={styles.bar}>
-        <img className={styles.logo} src={LOGOSM} alt="Logo de mercadoLibre" />
+
+        {/* Logo */}
+        <Link to='/'>
+          <img className={styles.logo} src={LOGOSM} alt="Logo de mercadoLibre" />
+        </Link>
+
+        {/* Input */}
         <input
           placeholder="Nunca dejes de buscar."
           value={value}
@@ -37,11 +42,13 @@ function SearchBar(props) {
           }}
           onKeyPressCapture={goToHandler}
         ></input>
-        <div className={styles.button}>
+
+        {/* Button */}
+        <a onClick={goToHandler} className={styles.button}>
           <div className={styles.centerIcon}>
             <SVG className={styles.icon} src={lupa} />
           </div>
-        </div>
+        </a>
       </div>
     </header>
   );

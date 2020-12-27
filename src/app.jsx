@@ -23,10 +23,10 @@ const App = () => {
         <Layout>
           <Switch>
             <Route path="/items" exact>
-              <Search></Search>
+              <Search />
             </Route>
             <Route path="/items/:id" exact>
-              <ProductsDetail></ProductsDetail>
+              <ProductsDetail />
             </Route>
           </Switch>
         </Layout>

@@ -1,13 +1,9 @@
-import React, { createContext, useState, useEffect } from "react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
-import axios from "axios";
-import { CFG } from "../../config";
+import React, { createContext, useState } from "react";
+import { useApi } from "../hooks/useApi";
 
 const ContextProvider = ({ children }) => {
-  let query = new URLSearchParams(useLocation().search).get("search");
 
-  
-  const history = useHistory();
+  // Estado general del app enviado por ContextApi
   const [state, setState] = useState({
     query: null,
     id: null,
@@ -15,25 +11,12 @@ const ContextProvider = ({ children }) => {
     detail: null,
   });
 
-  useEffect(() => {
-    if(state.query !== query){
-      setState({...state, query: query})
-    }
-  }, [query])
+  // Obtiene los productos buscados por query del api
+  useApi(state, setState, 'query', 'products', `/items?search=`)
 
-  useEffect(() => {
-    if(state.query === null) {return;}
+  // Obtiene el detalle del producto seleccionado por id del api
+  useApi(state, setState, 'id', 'detail', `/items/`)
 
-    axios
-      .get(`${CFG.baseURL}api/items?search=${state.query}`)
-      .then((resp) => {
-        setState({ ...state, products: resp.data });
-        history.push(`/items?search=${state.query}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, [state.query]);
 
   return (
     <>
@@ -45,4 +28,6 @@ const ContextProvider = ({ children }) => {
 };
 
 export default ContextProvider;
+
+// Se crea el contexto y se exporta
 export const AppContext = createContext();
