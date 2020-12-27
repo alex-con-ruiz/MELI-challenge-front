@@ -1,11 +1,14 @@
 import { hot } from "react-hot-loader/root";
-import React, { Component } from "react";
+import React from "react";
+require("./styles/styles.scss");
+import { Route, Switch, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import styles from "./styles/styles.scss";
 
 import Layout from "./components/Layout/Layout";
-import Products from "./components/Products/Products";
-import Detail from "./components/Detail/Detail";
+
+import Search from "./pages/Search";
+import ProductsDetail from "./pages/ProductDetail";
+import ContextProvider from "./contexts/provider";
 
 const App = () => {
   return (
@@ -16,13 +19,18 @@ const App = () => {
         <meta name="description" content="Mercado Libre App" />
       </Helmet>
 
-      <Layout>
-       {/*  <Products></Products>
-        <Products></Products>
-        <Products></Products>
-        <Products></Products> */}
-        <Detail></Detail>
-      </Layout>
+      <ContextProvider>
+        <Layout>
+          <Switch>
+            <Route path="/items" exact>
+              <Search></Search>
+            </Route>
+            <Route path="/items/:id" exact>
+              <ProductsDetail></ProductsDetail>
+            </Route>
+          </Switch>
+        </Layout>
+      </ContextProvider>
     </>
   );
 };
