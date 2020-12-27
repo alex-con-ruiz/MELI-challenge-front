@@ -49,8 +49,8 @@ module.exports = {
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
+    path: path.resolve(__dirname, "docs/"),
+    publicPath: "/docs/",
     filename: "bundle.js"
   },
   devServer: {
