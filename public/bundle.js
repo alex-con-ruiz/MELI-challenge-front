@@ -1187,7 +1187,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "76a3d57072c2eb5eb200"
+/******/ 		__webpack_require__.h = () => "5d0fa3db849a3474f6d1"
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -1638,7 +1638,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/docs/";
+/******/ 		__webpack_require__.p = "/public/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
