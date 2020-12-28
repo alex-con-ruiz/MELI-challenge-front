@@ -1,25 +1,29 @@
-import React, { useContext } from "react";
-import { AppContext } from "../contexts/provider";
-import Detail from "../components/Detail/Detail";
-import { useParams } from "react-router-dom";
-import { useQueryId } from "../hooks/useParams";
-import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
+import React, { Suspense, useContext } from 'react'
+import { AppContext } from '../contexts/provider'
+import { useParams } from 'react-router-dom'
+import { useQueryId } from '../hooks/useParams'
+
+const Detail = React.lazy(() => import('../components/Detail/Detail'))
+const Breadcrumb = React.lazy(() => import('../components/Breadcrumb/Breadcrumb'))
 
 export default function ProductDetail() {
-  const [state, setId] = useContext(AppContext);
+  const [state, setId] = useContext(AppContext)
 
   // Se obtiene el id de la url del navegador
-  const { id } = useParams();
+  const { id } = useParams()
 
   // Setea en caso de modificacion o autoload.
-  useQueryId("id", state, setId, id);
 
-  const detail = state.detail;
+  useQueryId('id', state, setId, id)
+
+  const detail = state.detail
 
   return (
     <>
-      <Breadcrumb />
-      {state.detail ? <Detail productDetail={detail.item} /> : null}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Breadcrumb />
+        {state.detail ? <Detail productDetail={detail.item} /> : null}
+      </Suspense>
     </>
-  );
+  )
 }

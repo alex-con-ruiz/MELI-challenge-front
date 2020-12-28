@@ -1,7 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
@@ -13,20 +16,22 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: true
-            }
+              modules: true,
+            },
           },
-          "sass-loader"]
+          'sass-loader',
+        ],
       },
-      { // SVG Support
+      {
+        // SVG Support
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -36,10 +41,10 @@ module.exports = {
             options: {
               name: '[name].[contenthash].[ext]',
               outputPath: 'assets/fonts',
-              esModule: false // <- here
-            }
-          }
-        ]
+              esModule: false,
+            },
+          },
+        ],
       },
     ],
   },
@@ -51,7 +56,9 @@ module.exports = {
     filename: '[name].bundle.js',
   },
   optimization: {
-    splitChunks: { chunks: "all" }
+    splitChunks: { chunks: 'all' },
+    minimize: true,
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
   },
   devtool: 'source-map',
   plugins: [
@@ -65,7 +72,7 @@ module.exports = {
   ],
   devServer: {
     port: 3000,
-    contentBase: path.join(__dirname, "public/"),
+    contentBase: path.join(__dirname, 'public/'),
     hot: true,
   },
-};
+}

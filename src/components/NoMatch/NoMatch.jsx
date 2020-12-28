@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react'
 
 // Styles
-import styles from "./NoMatch.scss";
+import styles from './NoMatch.scss'
 
 /* EL proposito de hacer este componente clase y Puro es traerlo de ejemplo ya que toda la app se hizo con functional components*/
 
@@ -9,7 +9,7 @@ export class NoMatch extends PureComponent {
   render() {
     return (
       <section className={styles.noitems_container}>
-        <div className="WhiteBoard">
+        <div className='WhiteBoard'>
           <div className={styles.NoItems}>
             <h1>No hay publicaciones que coincidan con tu búsqueda.</h1>
             <ul>
@@ -19,8 +19,8 @@ export class NoMatch extends PureComponent {
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
-export default NoMatch;
+export default NoMatch

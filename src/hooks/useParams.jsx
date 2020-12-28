@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 /**
  * Function hook se encarga de actualizar los parametros de busqueda de la URL en caso de autoload o modificacion
@@ -12,12 +12,13 @@ import { useEffect } from "react";
  */
 export const useQueryId = (key, state, setter, param) => {
   useEffect(() => {
-
     // Si la query o id en estado es diferente al del navegador
     if (state[`${key}`] !== param) {
-
       // Setea la del navegador y ejecuta useApi en el provider
-      setter({ ...state, [key]: param });
+      setter({ ...state, [key]: param })
+    } else {
+      return
     }
-  }, [param]);
-};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.param])
+}

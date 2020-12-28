@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { CFG } from "../../config";
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import { CFG } from '../../config'
 
 /**
  * Function hook se encarga de manejar los llamados al api
@@ -15,15 +15,15 @@ import { CFG } from "../../config";
  */
 export const useApi = (state, setter, param, key, path) => {
   // Se obtiene la history del browser para hacer routing programaticamente
-  const history = useHistory();
+  const history = useHistory()
 
   // Se obtiene la urlBase del archivo de config
-  const url = `${CFG.baseURL}/api`;
+  const url = `${CFG.baseURL}/api`
 
   useEffect(() => {
     // Si el estado es null se evita renderizados innecesarios
     if (state[param] === null) {
-      return;
+      return
     }
 
     // Llamada al api
@@ -31,14 +31,14 @@ export const useApi = (state, setter, param, key, path) => {
       .get(`${url}${path}${state[param]}`)
       .then((resp) => {
         // Se obtiene la data y se carga al estado al key correspondiente
-        setter({ ...state, [key]: resp.data });
+        setter({ ...state, [key]: resp.data })
 
         // Se navega a la ruta dispuesta
-        history.push(`${path}${state[param]}`);
+        history.push(`${path}${state[param]}`)
       })
       .catch((err) => {
         // Se navega a pagina de error
         history.push('/no-match')
-      });
-  }, [state[param]]);
-};
+      })
+  }, [state[param]])
+}
