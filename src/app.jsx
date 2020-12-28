@@ -1,7 +1,6 @@
-import { hot } from "react-hot-loader/root";
 import React from "react";
 require("./styles/styles.scss");
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import Layout from "./components/Layout/Layout";
@@ -11,9 +10,11 @@ import ProductsDetail from "./pages/ProductDetail";
 import ContextProvider from "./contexts/provider";
 
 const App = () => {
+
   return (
     <>
       {/* Helmet implementation for SEO */}
+
       <Helmet>
         <title>Mercado Libre</title>
         <meta name="description" content="Mercado Libre App" />
@@ -35,4 +36,4 @@ const App = () => {
   );
 };
 
-export default hot(App);
+export default App;

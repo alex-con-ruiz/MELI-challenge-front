@@ -20,6 +20,8 @@ function SearchBar() {
   // Ejecuta la busqueda del valor.
   const goToHandler = (e) => {
     if ((e.type === "keypress" && e.key === "Enter") || e.type === "click") {
+
+      console.log(e);
       setQuery({...state, query: value})
     }
   };

@@ -1,65 +1,53 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: path.resolve(__dirname, './src/index.js'),
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
-      { // CSS / SASS & Css.module Support
+      {
         test: /\.scss$/,
         use: [
-          {
-            loader: 'style-loader',
-            options: {
-              hmr: false
-            }
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          },
-          'resolve-url-loader',
-          'sass-loader'
-        ]
-      },
-      { // IMG Support
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader'
+        "style-loader",
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true
           }
-        ]
+        },
+         "sass-loader"]
       },
-      { test: /\.(png|woff|woff2|eot|ttf)$/, loader: 'url-loader' },
       { // SVG Support
         test: /\.svg$/,
         loader: 'svg-inline-loader'
       }
-    ]
+    ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
   output: {
-    path: path.resolve(__dirname, "public/"),
-    publicPath: "/public/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, './dist'),
+    filename: 'bundle.js',
   },
+  devtool: 'source-map',
+  plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './public/index.html'),
+    }),
+  ],
   devServer: {
-    contentBase: path.join(__dirname, "public/"),
     port: 3000,
-    publicPath: "http://localhost:3000/dist/",
-    hot: true
+    contentBase: path.join(__dirname, "public/"),
+    hot: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new HtmlWebpackPlugin({
-    template: "./public/index.html"
-  })]
 };
