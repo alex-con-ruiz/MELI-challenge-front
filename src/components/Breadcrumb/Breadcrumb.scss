@@ -1,11 +1,33 @@
-@import '../../styles/__vars.scss';
+@import "../../styles/__vars.scss";
 
 .breadcrumb {
   display: flex;
-  height: 46px;
-  max-width: 90%;
-  margin: 0 auto;
+  flex-wrap: wrap;
   align-items: center;
+  padding: $smallSpace 0;
+
+  .Breadcrumb_el {
+    margin: 0 0 0 5px;
+    color: $grayLight;
+  }
+
+  .Breadcrumb_chevron {
+    cursor: default;
+    color: $grayLight;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    &::after {
+      font-family: 'Icons';
+      content: "\e902";
+      font-size: 11px;
+      transform: translateY(1px);
+    }
+
+    .hide {
+      visibility: hidden;
+    }
+  }
 
   @media only screen and (min-width: $desktop) {
     max-width: 80%;

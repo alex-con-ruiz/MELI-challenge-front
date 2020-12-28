@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
@@ -15,19 +15,32 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-        "style-loader",
-        {
-          loader: 'css-loader',
-          options: {
-            modules: true
-          }
-        },
-         "sass-loader"]
+          "style-loader",
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          "sass-loader"]
       },
       { // SVG Support
         test: /\.svg$/,
         loader: 'svg-inline-loader'
-      }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[contenthash].[ext]',
+              outputPath: 'assets/fonts',
+              esModule: false // <- here
+            }
+          }
+        ]
+      },
     ],
   },
   resolve: {
@@ -35,7 +48,10 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+  },
+  optimization: {
+    splitChunks: { chunks: "all" }
   },
   devtool: 'source-map',
   plugins: [

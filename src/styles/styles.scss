@@ -1,37 +1,42 @@
-@import './__vars.scss';
+@import "./__vars.scss";
 
-*, html{
+*,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* @font-face {
-  font-family: "Roboto";
-  font-weight: 300;
-  font-display: auto;
-  src: url("../assets/fonts/Roboto/Roboto-Light.woff") format("woff");
-} */
-/* @font-face {
-  font-family: "Roboto";
+@font-face {
+  font-family: "Proxima";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../assets/fonts/proximanova-light.woff2") format("woff");
+}
+@font-face {
+  font-family: "Proxima";
+  font-style: normal;
   font-weight: 400;
-  font-display: auto;
-  src: url("/fonts/Roboto/Roboto-Regular.woff") format("woff"),
-    url("/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/proxima-nova-400.woff2") format("woff");
+}
+@font-face {
+  font-family: "Proxima";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/proxima-nova-600.woff2") format("woff");
 }
 
 @font-face {
-  font-family: "Roboto";
-  font-weight: 900;
-  font-display: auto;
-  src: url("/fonts/Roboto/Roboto-Bold.woff") format("woff");
-  src: url("/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
-} */
-
-
-body{
-  background-color: $background;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Icons';
+  src: url('../assets/fonts/search-icons-v34.woff2') format("woff"),
 }
 
 
+
+
+body {
+  background-color: $background;
+  font-family: 'Proxima', sans-serif;
+  font-weight: 200;
+  color: $gray;
+}

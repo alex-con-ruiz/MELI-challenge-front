@@ -8,7 +8,7 @@ const ContextProvider = ({ children }) => {
     query: null,
     id: null,
     products: null,
-    detail: null,
+    detail: null
   });
 
   // Obtiene los productos buscados por query del api

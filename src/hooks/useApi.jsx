@@ -3,7 +3,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { CFG } from "../../config";
 
-
 /**
  * Function hook se encarga de manejar los llamados al api
  * @example - useApi(state, setState, 'query', 'products', `/items?search=`)
@@ -15,7 +14,6 @@ import { CFG } from "../../config";
  * @return  void
  */
 export const useApi = (state, setter, param, key, path) => {
-
   // Se obtiene la history del browser para hacer routing programaticamente
   const history = useHistory();
 
@@ -23,15 +21,15 @@ export const useApi = (state, setter, param, key, path) => {
   const url = `${CFG.baseURL}/api`;
 
   useEffect(() => {
-
     // Si el estado es null se evita renderizados innecesarios
-    if(state[param] === null) {return;}
+    if (state[param] === null) {
+      return;
+    }
 
     // Llamada al api
     axios
       .get(`${url}${path}${state[param]}`)
       .then((resp) => {
-
         // Se obtiene la data y se carga al estado al key correspondiente
         setter({ ...state, [key]: resp.data });
 
@@ -39,9 +37,8 @@ export const useApi = (state, setter, param, key, path) => {
         history.push(`${path}${state[param]}`);
       })
       .catch((err) => {
-
         // Se navega a pagina de error
-        console.log(err);
-      })
+        history.push('/no-match')
+      });
   }, [state[param]]);
 };

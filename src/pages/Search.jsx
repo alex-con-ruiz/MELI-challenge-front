@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 import Products from "../components/Products/Products";
 import { AppContext } from "../contexts/provider";
 import { useQueryId } from "../hooks/useParams";
@@ -26,6 +27,7 @@ export default function Search() {
 
   return (
     <>
+      <Breadcrumb />
       {state.products
         ? products.map((product) => (
             <Products product={product} key={product.id} />

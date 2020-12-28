@@ -3,6 +3,7 @@ import { AppContext } from "../contexts/provider";
 import Detail from "../components/Detail/Detail";
 import { useParams } from "react-router-dom";
 import { useQueryId } from "../hooks/useParams";
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
 
 export default function ProductDetail() {
   const [state, setId] = useContext(AppContext);
@@ -16,6 +17,9 @@ export default function ProductDetail() {
   const detail = state.detail;
 
   return (
-    <>{state.detail ? <Detail productDetail={detail.item}/> : null}</>
+    <>
+      <Breadcrumb />
+      {state.detail ? <Detail productDetail={detail.item} /> : null}
+    </>
   );
 }

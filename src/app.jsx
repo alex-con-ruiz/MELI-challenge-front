@@ -8,6 +8,7 @@ import Layout from "./components/Layout/Layout";
 import Search from "./pages/Search";
 import ProductsDetail from "./pages/ProductDetail";
 import ContextProvider from "./contexts/provider";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 const App = () => {
 
@@ -23,11 +24,17 @@ const App = () => {
       <ContextProvider>
         <Layout>
           <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
             <Route path="/items" exact>
               <Search />
             </Route>
             <Route path="/items/:id" exact>
               <ProductsDetail />
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
         </Layout>
@@ -35,5 +42,9 @@ const App = () => {
     </>
   );
 };
+
+function Home() {
+  return '';
+}
 
 export default App;

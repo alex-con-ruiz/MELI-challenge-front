@@ -1,0 +1,15 @@
+@import '../../styles/__vars.scss';
+
+.noitems_container {
+  display: flex;
+  justify-content: center;
+  padding-top: 52px;
+}
+.NoItems {
+      padding: $space;
+      font-weight: 200;
+
+      ul{
+            padding: $space;
+      }
+}
