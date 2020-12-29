@@ -70,7 +70,7 @@ Aunque el servidor se encuentra en **src/server** aca te dejo el link si quieres
 ## Deploy 🚀
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://alex-con-ruiz.github.io/MELI-challenge-front/#/) .
-Puedes ver ejemplo de los endpints solicitados aqui:
+Puedes ver ejemplo de los endpoints solicitados aqui:
  * [Detalle de un producto](https://alex-con-ruiz.github.io/MELI-challenge-front/#/items/MLA879715388)
  * [Busqueda de producto](https://alex-con-ruiz.github.io/MELI-challenge-front/#/items?search=dados%20de%20rol)
  
