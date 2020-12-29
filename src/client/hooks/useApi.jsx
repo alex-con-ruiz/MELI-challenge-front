@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { CFG } from '../../config'
+import { CFG } from '../../../config'
 
 /**
  * Function hook se encarga de manejar los llamados al api

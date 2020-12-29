@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import SVG from 'react-inlinesvg'
 import { AppContext } from '../../contexts/provider'
-import { CFG } from '.././../../config'
+import { CFG } from '../../../../config'
 
 // Style
 import styles from './SearchBar.module.scss'
